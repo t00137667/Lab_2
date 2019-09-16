@@ -37,7 +37,7 @@ public class CP3LinkedList<E> {
         newLink.next = first;
         if (first == null)
             last = newLink;
-        
+
         first = newLink;
     }
 
@@ -46,6 +46,11 @@ public class CP3LinkedList<E> {
         Node newLink = new Node();
         newLink.data = element;
         newLink.next = null;
+        if (last == null)
+            first = newLink;
+        else
+            last.next = last;
+
         last = newLink;
     }
 
@@ -60,6 +65,9 @@ public class CP3LinkedList<E> {
             throw new NoSuchElementException();
         E element = first.data;
         first = first.next;
+        if (first == null){
+            last = null;
+        }
         return element;
     }
 
